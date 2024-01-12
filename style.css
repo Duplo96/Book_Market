@@ -1,6 +1,6 @@
+.carts {
+  z-index: 3;
+}
 .addingCart {
   border: 1px solid black;
-}
-.carts {
-  z-index: 2;
 }

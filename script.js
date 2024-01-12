@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const card = buttonCard.closest(".card");
           const cartIcon = card.querySelector(".carts");
           cartIcon.classList.toggle("d-none");
+          cartIcon.classList.toggle("cart");
           card.classList.toggle("addingCart");
         });
       });
@@ -36,4 +37,3 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Error fetching data:", error);
     });
 });
-function addClass() {}

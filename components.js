@@ -5,7 +5,7 @@ export function createCard(book) {
     <div class="card col-4 position-relative p-0" style="width: 18rem">
       <ion-icon
         name="cart"
-        class="position-absolute top-0 end-0 text-danger circle fs-2 d-none carts"
+        class="position-absolute top-0 end-0 text-danger fs-2 carts d-none"
       ></ion-icon>
       <img src="${img}" class="card-img-top" alt="...">
       <div class="card-body">
