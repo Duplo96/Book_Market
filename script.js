@@ -1,29 +1,39 @@
-var requestOptions = {
-  method: "GET",
-  redirect: "follow",
-};
+import { fetchData } from "./fetch.js";
+import { createCard } from "./components.js";
 
-fetch("https://striveschool-api.herokuapp.com/books", requestOptions)
-  .then((response) => response.json())
-  .then((results) => {
-    const books = results;
-    const container = document.querySelector(".container");
-    const cards = document.createElement("div");
-    container.append(cards);
-    books.map((book) => {
-      const title = book.title;
-      const img = book.img;
-      const price = book.price;
-      const category = book.category;
-      cards.innerHTML += `  
-      <div class="card" style="width: 18rem;">
-      <img src="${img}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">${title}</h5>
-        <p class="card-text">${category}</p>
-        <a href="#" class="btn btn-primary">${price}</a>
-      </div>
-    </div>`;
+document.addEventListener("DOMContentLoaded", function () {
+  fetchData()
+    .then((books) => {
+      const container = document.querySelector(".container");
+      const row = document.createElement("div");
+      row.className = "row";
+      container.append(row);
+
+      books.forEach((book) => {
+        const cardHTML = createCard(book);
+        row.innerHTML += cardHTML;
+      });
+
+      const buttonsSkip = document.querySelectorAll(".skip-button");
+      buttonsSkip.forEach((buttonSkip) => {
+        buttonSkip.addEventListener("click", function () {
+          const card = buttonSkip.closest(".card");
+          card.classList.add("d-none");
+        });
+      });
+
+      const buttonCarts = document.querySelectorAll(".Add_Cart");
+      buttonCarts.forEach((buttonCard) => {
+        buttonCard.addEventListener("click", function () {
+          const card = buttonCard.closest(".card");
+          const cartIcon = card.querySelector(".carts");
+          cartIcon.classList.toggle("d-none");
+          card.classList.toggle("addingCart");
+        });
+      });
+    })
+    .catch((error) => {
+      console.log("Error fetching data:", error);
     });
-  })
-  .catch((error) => console.log("error", error));
+});
+function addClass() {}
