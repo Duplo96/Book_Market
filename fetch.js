@@ -1,13 +1,18 @@
-const fetchData = () => {
-  const requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
+const fetchData = async () => {
+  try {
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
 
-  return fetch(
-    "https://striveschool-api.herokuapp.com/books",
-    requestOptions
-  ).then((response) => response.json());
+    const response = await fetch(
+      "https://striveschool-api.herokuapp.com/books",
+      requestOptions
+    );
+    return await response.json();
+  } catch (error) {
+    console.error("Errore durante la richiesta:", error);
+  }
 };
 const getBookByID = async (asin) => {
   try {
