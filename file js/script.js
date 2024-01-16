@@ -5,7 +5,6 @@ import {
   filterCard,
   detailCard,
 } from "./components.js";
-import { getBookByID } from "./fetch.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
