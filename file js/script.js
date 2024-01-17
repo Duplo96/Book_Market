@@ -1,10 +1,5 @@
 import { fetchData } from "./fetch.js";
-import {
-  createCard,
-  addToCartEvent,
-  filterCard,
-  detailCard,
-} from "./components.js";
+import { createCard, addToCartEvent, filterCard } from "./components.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
