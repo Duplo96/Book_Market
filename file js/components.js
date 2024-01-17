@@ -13,10 +13,10 @@ const createCard = (book) => `
       <h5 class="card-title">${book.title}</h5>
       <p class="card-text">${book.category}</p>
       <a href="#" id="button-${book.asin}" class="btn btn-primary Add_Cart">${book.price}</a>
-      <a href="#" class="btn btn-primary skip-button">Non mi interessa</a>
+      <a href="#" id"button-skip${book.asin}" class="btn btn-primary skip-button">Non mi interessa</a>
       <a class="btn btn-warning detailsButton" href="./details.html?id=${book.asin}">Details</a>
     </div>
-  </div>`;
+    </div>`;
 
 // Script add to cart and change CSS card
 
@@ -35,6 +35,17 @@ const addToCartEvent = async (ev) => {
     cart.innerHTML += `<li  id="${cartItemId}">  ${bookData.title} </li>`;
   } else {
     currentListItem.remove();
+  }
+};
+
+// Script skip to cart
+const skipCard = (ev) => {
+  const clickedButton = ev.target.closest(".skip-button");
+  if (clickedButton) {
+    const cardToSkip = clickedButton.closest(".card");
+    if (cardToSkip) {
+      cardToSkip.classList.add("d-none");
+    }
   }
 };
 
@@ -69,5 +80,4 @@ const detailCard = (book) => {
         </div>
       </div>`;
 };
-
-export { createCard, addToCartEvent, filterCard, detailCard };
+export { createCard, addToCartEvent, filterCard, detailCard, skipCard };

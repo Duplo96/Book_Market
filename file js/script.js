@@ -1,5 +1,10 @@
 import { fetchData } from "./fetch.js";
-import { createCard, addToCartEvent, filterCard } from "./components.js";
+import {
+  createCard,
+  addToCartEvent,
+  filterCard,
+  skipCard,
+} from "./components.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -27,9 +32,7 @@ const setupEventListeners = () => {
 
 const setupSkipButtons = () => {
   document.querySelectorAll(".skip-button").forEach((buttonSkip) => {
-    buttonSkip.addEventListener("click", () => {
-      buttonSkip.closest(".card").classList.add("d-none");
-    });
+    buttonSkip.addEventListener("click", skipCard);
   });
 };
 
